@@ -1,9 +1,24 @@
 import './App.css'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
+
+// get data from ls
+const getLocalItems = ()=>{
+  let list = localStorage.getItem('lists')
+  console.log(list)
+  if(list){
+    return JSON.parse(localStorage.getItem('lists'))
+  }else{
+    return []
+  }
+}
 
 function App() {
-  const [toDos,setToDos]= useState([])
+  const [toDos,setToDos]= useState(getLocalItems())
   const [toDo,setToDo]= useState('')
+  // add data to local storage
+  useEffect(() => {
+    localStorage.setItem('lists', JSON.stringify(toDos))
+  }, [toDos])
   return (
     <div className="app">
       <div className="mainHeading">
