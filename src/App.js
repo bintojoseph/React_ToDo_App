@@ -4,6 +4,14 @@ import {useState} from 'react'
 function App() {
   const [toDos,setToDos]= useState([])
   const [toDo,setToDo]= useState('')
+  /*const removeToDo=()=>{
+    setToDos(toDos.filter(obj2=>{
+      if(obj2.id===obj.id){
+        obj2=''
+      }
+      return obj2
+    }))
+  }*/
   return (
     <div className="app">
       <div className="mainHeading">
@@ -40,7 +48,14 @@ function App() {
                   <p>{obj.text}</p>
                 </div>
                 <div className="right">
-                  <i className="fas fa-times"></i>
+                  <i onClick={()=>{
+                    setToDos(toDos.filter(obj2=>{
+                      if(obj2.id===obj.id){
+                        obj2=''
+                      }
+                      return obj2
+                    }))
+                  }} className="fas fa-times"></i>
                 </div>
               </div>
             )
