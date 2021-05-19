@@ -4,14 +4,6 @@ import {useState} from 'react'
 function App() {
   const [toDos,setToDos]= useState([])
   const [toDo,setToDo]= useState('')
-  /*const removeToDo=()=>{
-    setToDos(toDos.filter(obj2=>{
-      if(obj2.id===obj.id){
-        obj2=''
-      }
-      return obj2
-    }))
-  }*/
   return (
     <div className="app">
       <div className="mainHeading">
