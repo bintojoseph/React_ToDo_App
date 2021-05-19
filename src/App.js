@@ -16,8 +16,10 @@ function App() {
       <div className="input">
         <input value={toDo} onChange={(e)=>setToDo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
         <i onClick={()=>{
-          setToDos([...toDos,{id:Date.now(),text:toDo,status:false}])
-          setToDo('')
+          if(toDo.length>0){
+            setToDos([...toDos,{id:Date.now(),text:toDo,status:false}])
+        setToDo('')
+          }
         }} 
         className="fas fa-plus"></i>
       </div>
@@ -37,7 +39,7 @@ function App() {
                       return obj2
                     }))
                   }} value={obj.status} type="checkbox" name="" id="" />
-                  <p>{obj.text}</p>
+                  <p style={{textDecoration : obj.status ? "line-through" : "",color : obj.status ? 'gray' : ""}}>{obj.text}</p>
                 </div>
                 <div className="right">
                   <i onClick={()=>{
